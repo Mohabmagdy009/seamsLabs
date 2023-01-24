@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\firstPartController;
+use App\Http\Controllers\userController;
+use App\Http\Controllers\userAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('partOne/{firstNumber}/{secondNumber}', [firstPartController::class, 'Q1']);
 Route::get('partOne/{id}', [firstPartController::class, 'Q2']);
 Route::post('partOne', [firstPartController::class, 'Q3']);
+Route::resource('users', userController::class);
+Route::get('login/{username}/{password}', [userAuth::class, 'userCheck']);
+
